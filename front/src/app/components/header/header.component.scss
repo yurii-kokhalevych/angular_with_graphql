@@ -1,0 +1,78 @@
+@import '../../../styles/constants/_index';
+@import '../../../styles/scripts/_index';
+
+@mixin justify {
+  @include flex-align-center;
+  height: 100%;
+  padding: 0 15px;
+}
+
+.main-header {
+  @include flexBox(row, flex-end, center);
+  $size: 30px;
+  width: 100%;
+  height: 60px;
+  background-color: var(--header-background);
+  &.no-auth {
+    justify-content: space-between;
+  }
+  .header-icon {
+    @include justify;
+    img {
+      width: $size;
+      height: $size;
+    }
+  }
+  .navbar {
+    $widthTitle: 130px;
+    $widthExit: 60px;
+    width: calc(100% - #{$widthTitle} - #{$widthExit});
+    justify-content: flex-end;
+    .img-wrap {
+      $size: 50px;
+      @include flex-center;
+      border: 1px solid var(--AAA);
+      width: $size;
+      height: $size;
+      border-radius: 50%;
+      margin: 0 10px;
+      background-color: var(--EEE);
+    }
+    .img {
+      $size: 30px;
+      background: center center no-repeat;
+      background-size: contain;
+      width: $size;
+      height: $size;
+    }
+    .icon {
+      font-size: getPropFromMap($fontSizes, fz30);
+    }
+    .navbar-brand {
+      cursor: pointer;
+      color: var(--white);
+      opacity: getPropFromMap($opacities, shadow);
+      &.active {
+        color: var(--yellow);
+      }
+      &:hover {
+        opacity: getPropFromMap($opacities, active);
+      }
+    }
+  }
+  .exit {
+    @include justify;
+    color: var(--white);
+    cursor: pointer;
+    .icon{
+      font-size: getPropFromMap($fontSizes, large);
+    }
+  }
+  .title {
+    @include justify;
+    color: var(--white);
+    font-family: Constantia, sans-serif;
+    font-size: getPropFromMap($fontSizes, big);
+    text-transform: uppercase;
+  }
+}

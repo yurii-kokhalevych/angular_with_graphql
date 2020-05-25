@@ -1,0 +1,18 @@
+@import '../../../styles/_pages';
+
+.login-container {
+  $size: 30px;
+  @extend %auth-page;
+  .google-login {
+    .title {
+      text-align: center;
+      color: var(--AAA);
+      margin: 20px 0;
+    }
+    img {
+      width: $size;
+      height: $size;
+    }
+  }
+}
+

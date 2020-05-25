@@ -1,0 +1,8 @@
+textarea {
+  resize: none;
+}
+button {
+  &:focus {
+    outline: none;
+  };
+}

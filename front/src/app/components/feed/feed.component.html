@@ -1,0 +1,70 @@
+
+<div class="feeds-container">
+  <ngx-ui-loader></ngx-ui-loader>
+    <form>
+      <div class="general">
+      <h1 *ngIf="search.getLoading">Loading...</h1>
+      <h1 *ngIf="!search.getLoading">{{isMyPost ? 'My' : 'All'}} Posts</h1>
+      <div class="button" *ngIf="!search.getLoading">
+        <button class="btn btn-info" (click)="onAdd()">
+          <i-bs name="plus" class="icon"></i-bs>
+          Add Post
+        </button>
+      </div>
+      <div class="table-responsive feeds"
+           infinite-scroll
+           [infiniteScrollDistance]="search.scrollDistance"
+           [infiniteScrollThrottle]="search.throttle"
+           [scrollWindow]="false"
+           (scrolled)="search.onScrollDown()"
+      >
+        <table class="table table-hover">
+          <thead>
+          <tr class="d-flex">
+            <th class="col-1">#</th>
+            <th class="col-2" scope="col" sortable="title" (sort)="onSort($event)">Title</th>
+            <th class="col-2" scope="col" sortable="description" (sort)="onSort($event)">Description</th>
+            <th class="col-2" scope="col" sortable="creator" (sort)="onSort($event)">Creator</th>
+            <th class="col-2" scope="col" sortable="createdAt" (sort)="onSort($event)">Created At</th>
+            <th class="col-3"></th>
+          </tr>
+          <tr class="filter-wrap">
+            <div class="col-1"></div>
+            <input class="form-control col-2" type="text" name="searchTitle" placeholder="Title" [(ngModel)]="search.searchTitle" />
+            <input class="form-control col-2" type="text" name="searchDescription" placeholder="Description" [(ngModel)]="search.searchDescription" />
+            <input class="form-control col-2" type="text" name="searchCreator" placeholder="Creator" [(ngModel)]="search.searchCreator" />
+            <input class="form-control col-2" placeholder="YYYY-MM-DD" name="dp" ngbDatepicker #d="ngbDatepicker" [(ngModel)]="search.searchCreatedAt" (click)="d.toggle()">
+            <div class="col-3"></div>
+          </tr>
+          </thead>
+          <tbody>
+          <tr class='no-feed col-12'  *ngIf="!(search.getBlogs.length) && !search.getLoading">
+            <i-bs name="exclamation" class="icon"></i-bs>
+            <span>No available data</span>
+          </tr>
+          <tr *ngFor="let blog of search.getBlogs let i = index" class="d-flex">
+            <td class="col-1">{{i + 1}}</td>
+            <td class="col-2"><abbr [title]="blog.title">{{blog.title | truncate : 9 }}</abbr></td>
+            <td class="col-2"><abbr [title]="blog.description">{{blog.description | truncate : 9 }}</abbr></td>
+            <td class="col-2"><abbr [title]="blog.creator.name">{{blog.creator.name | truncate : 9 }}</abbr></td>
+            <td class="col-2"><abbr [title]="blog.createdAt">{{ blog.createdAt | date: 'dd/MM/y' }}</abbr></td>
+            <td class="col-3 edit">
+              <a class="btn btn-info" [routerLink]="[blog._id]">
+                <i-bs name="three-dots" class="icon"></i-bs>
+              </a>
+              <a class="btn btn-primary" *ngIf="isMyPost" (click)="onEdit(blog)">
+                <i-bs name="pencil" class="icon"></i-bs>
+              </a>
+              <a class="btn btn-danger" *ngIf="isMyPost" (click)="onDelete(blog._id)">
+                <i-bs name="trash" class="icon"></i-bs>
+              </a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </form>
+</div>
+
+

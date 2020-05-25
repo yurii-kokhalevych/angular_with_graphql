@@ -1,0 +1,104 @@
+@import '../../../styles/constants/_index';
+@import '../../../styles/scripts/_index';
+
+.feeds-container {
+  @include flex-center;
+  height: auto;
+  h1 {
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .button {
+    position: absolute;
+    top: 35px;
+    right: 30px;
+  }
+  .filter-wrap {
+    $margin: 2px;
+    @include flexBox();
+    padding: 3px 0;
+    .form-control {
+      margin: 0 $margin;
+    }
+    .col-2 {
+      flex: 0 0 calc(16.666667% - 2*#{$margin});
+    }
+    .col-3 {
+      flex: 0 0 calc(25% - 2*#{$margin});
+    }
+  }
+  .general {
+    $margin: 40px;
+    $borderRadius: 30px;
+    position: relative;
+    height: 800px;
+    margin: 15px 0;
+    width: calc(100% - 2 * #{$margin});
+    border-radius: $borderRadius;
+    box-shadow: 0 3px 80px var(--white-1);
+    padding: 30px;
+    .no-feed {
+      @include flex-center;
+      padding: 30px 10px;
+      font-size: getPropFromMap($fontSizes, very-large);
+      text-transform: uppercase;
+      background-color: var(--BBB);
+      opacity: getPropFromMap($opacities, half);
+      border-radius: $borderRadius;
+      .icon {
+        font-size: getPropFromMap($fontSizes, super-large);
+      }
+    }
+    .table-responsive {
+      width: 100%;
+      max-height: 656px;
+      overflow: auto;
+      .feeds {
+        $margin: 20px;
+        width: calc(100vw - 2 * #{$margin});
+        margin: $margin;
+        padding: 0 40px;
+      }
+    }
+    .edit {
+      @include flexBox();
+      justify-content: flex-end;
+      .btn {
+        margin-right: 5px;
+      }
+    }
+    .btn {
+      color: white;
+      max-height: 42px;
+    }
+  }
+
+  th[sortable] {
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  th[sortable].desc:before, th[sortable].asc:before {
+    content: '';
+    display: block;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAmxJREFUeAHtmksrRVEUx72fH8CIGQNJkpGUUmakDEiZSJRIZsRQmCkTJRmZmJgQE0kpX0D5DJKJgff7v+ru2u3O3vvc67TOvsdatdrnnP1Y///v7HvvubdbUiIhBISAEBACQkAICAEhIAQ4CXSh2DnyDfmCPEG2Iv9F9MPlM/LHyAecdyMzHYNwR3fdNK/OH9HXl1UCozD24TCvILxizEDWIEzA0FcM8woCgRrJCoS5PIwrANQSMAJX1LEI9bqpQo4JYNFFKRSvIgsxHDVnqZgIkPnNBM0rIGtYk9YOOsqgbgepRCfdbmFtqhFkVEDVPjJp0+Z6e6hRHhqBKgg6ZDCvYBygVmUoEGoh5JTRvIJwhJo1aUOoh4CLPMyvxxi7EWOMgnCGsXXI1GIXlZUYX7ucU+kbR8NW8lh3O7cue0Pk32MKndfUxQFAwxdirk3fHappAnc0oqDPzDfGTBrCfHP04dM4oTV8cxr0SVzH9FF07xD3ib6xCDE+M+aUcVygtWzzbtGX2rPBrEUYfecfQkaFzYi6HjVnGBdtL7epqAlc1+jRdAap74RrnPc4BCijttY2tRcdN0g17w7HqZrXhdJTYAuS3hd8z+vKgK3V1zWPae0mZDMykadBn1hTQBLnZNwVrJpSe/NwEeDsEwCctEOsJTsgxLvCqUl2ACftEGvJDgjxrnBqkh3ASTvEWrIDQrwrnJpkB3DSDrGW7IAQ7wqnJtkBnLRztejXXVu4+mxz/nQ9jR1w5VB86ejLTFcnDwhzV+F6T+CHZlx6THSjn76eyyBIOPHyDakhBAQAkJACAgBISAEhIAQYCLwC8JxpAmsEGt6AAAAAElFTkSuQmCC') no-repeat;
+    background-size: 22px;
+    width: 22px;
+    height: 22px;
+    float: left;
+    margin-left: -22px;
+  }
+
+  th[sortable].desc:before {
+    transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+  }
+  abbr[title] {
+    text-decoration: none;
+    cursor: default;
+  }
+}
+
+
+

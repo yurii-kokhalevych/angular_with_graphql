@@ -1,0 +1,23 @@
+@import 'border';
+@import 'fonts';
+@import 'flexbox';
+@import 'shadow';
+
+@mixin box-shadow-dark-blue-2 {
+  box-shadow: 0 1px 8px 1px var(--dark-blue-2);
+}
+
+@mixin profile-h2 {
+  @include fontSettings(24px, null, 500, 32px, 0.8px);
+}
+
+@mixin absolute-top-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+@mixin width-height-100 {
+  width: 100%;
+  height: 100%;
+}

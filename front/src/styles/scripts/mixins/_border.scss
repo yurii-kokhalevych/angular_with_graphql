@@ -1,0 +1,13 @@
+@import '../../constants/index';
+
+@mixin borderRadius($radius: 0) {
+  border-radius: $radius;
+}
+
+@mixin border($color: var(--dark-blue-12), $radius: null, $borderProperty: border, $size: 1px) {
+  #{$borderProperty}: $size solid $color;
+
+  @if $radius {
+    @include borderRadius($radius);
+  }
+}

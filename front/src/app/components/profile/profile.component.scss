@@ -1,0 +1,98 @@
+@import '../../../styles/constants/_index';
+@import '../../../styles/scripts/_index';
+@import '../../../styles/_pages';
+
+@mixin img {
+  .image-upload-container {
+    @include flexBox();
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .btn-file {
+    $size: 115px;
+    @include flex-center;
+    background-color: var(--BBB);
+    border-color: var(--BBB);
+    color: var(--white);
+    height: 60%;
+    font-size: getPropFromMap($fontSizes, fz20);
+    .img-preview {
+      background: center center no-repeat;
+      background-size: contain;
+      height: $size;
+      width: $size;
+    }
+  }
+}
+
+.profile-container {
+  @include flex-center;
+  @extend %info-container;
+  height: 100%;
+  h3 {
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .general {
+    $margin: 40px;
+    $borderRadius: 30px;
+    height: auto;
+    min-height: 350px;
+    width: calc(100% - 2 * #{$margin});
+    max-width: 600px;
+    border-radius: $borderRadius;
+    box-shadow: 0 3px 80px var(--white-1);
+    padding: 30px;
+  }
+
+
+  .profile-info {
+    @include flexBox();
+    flex-wrap: wrap;
+    padding: 15px;
+    @include img;
+    .image-upload-container {
+      cursor: default;
+      min-height: 130px;
+      min-width: 130px;
+    }
+
+    .profile-details {
+      width: 70%;
+      padding: 0 15px;
+      .group {
+        @include flexBox();
+        width: 100%;
+        align-items: center;
+        padding: 4px 0;
+        span {
+          margin: 0;
+          flex-shrink: 0;
+          width: 30%;
+        }
+        .invalid-feedback {
+          text-align: end;
+        }
+      }
+      hr {
+        margin: 0.5rem 0;
+      }
+      .buttons-wrap {
+        justify-content: flex-end;
+      }
+    }
+  }
+}
+
+.modal-body {
+  @include img;
+  input#imageInput {
+    display: none;
+  }
+}
+button {
+  &:focus {
+    outline: none;
+  };
+}

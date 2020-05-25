@@ -1,0 +1,18 @@
+<div class="main-header" [ngClass]="{ 'no-auth': !hide }">
+  <div class="header-icon">
+    <img src="assets/img/blog.png" alt="blog" />
+    <div class="title" [textContent]="title"></div>
+  </div>
+  <nav *ngIf="hide" class="navbar">
+    <div class="img-wrap">
+      <div class='img' *ngIf="img" [ngStyle]="{'background-image': 'url('+ img + ')'}" ></div>
+      <i-bs *ngIf="!img" name="person" class="icon"></i-bs>
+    </div>
+    <a class="navbar-brand" [routerLink]="['/profile']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Profile</a>
+    <a class="navbar-brand" [routerLink]="['/my-feed']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">My Post</a>
+    <a class="navbar-brand" [routerLink]="['/feed']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Posts</a>
+  </nav>
+  <div class="exit" (click)="onLogOut()" *ngIf="hide">
+    <i-bs name="box-arrow-in-right" class="icon"></i-bs>
+  </div>
+</div>

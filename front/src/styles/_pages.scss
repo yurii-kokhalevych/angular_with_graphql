@@ -1,0 +1,55 @@
+@import '../styles/constants/_index';
+@import '../styles/scripts/_index';
+
+%auth-page {
+  @include flex-align-center;
+  flex-direction: column;
+  padding: 80px 0;
+  hr {
+    margin: 25px 0;
+  }
+  h3 {
+    text-transform: uppercase;
+    color: var(--black);
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.3);
+    text-align: center;
+    margin: 50px 0;
+  }
+  .form-wrap {
+    width: 500px;
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid var(--AAA);
+    box-shadow: 3px 2px 3px #AAA;
+    .buttons-wrap {
+      @include flexBox(row, space-between);
+      button {
+        &:disabled {
+          cursor: default;
+          opacity: 0.4;
+        }
+      }
+    }
+  }
+  .login {
+    width: 100%;
+  }
+  .register-block {
+    margin: 40px 0;
+    text-align: center;
+    color: var(--AAA);
+  }
+}
+
+%info-container {
+  .general {
+    $margin: 40px;
+    $borderRadius: 30px;
+    height: calc(100% - 5 * #{$margin});
+    width: calc(100% - 2 * #{$margin});
+    max-width: 600px;
+    border-radius: $borderRadius;
+    box-shadow: 0 3px 80px var(--white-1);
+    padding: 30px;
+  }
+}

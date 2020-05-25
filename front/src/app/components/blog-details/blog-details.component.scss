@@ -1,0 +1,47 @@
+@import '../../../styles/constants/_index';
+@import '../../../styles/scripts/_index';
+
+.blog-details-container{
+  height: auto;
+  width: auto;
+  .blog {
+    padding: 40px;
+    .card {
+      box-shadow: 0 3px 80px var(--white-1);
+    }
+    .card-title {
+      min-height: 300px;
+      font-size: getPropFromMap($fontSizes, large);
+      font-style: italic;
+    }
+    .card-header{
+      font-weight: bold;
+      background-color: var(--EEE);
+    }
+    .addition-block, .card-header {
+      @include flex-align-center;
+      justify-content: space-between;
+    }
+    .btn {
+      margin: 0 5px;
+      color: var(--white);
+    }
+    .card-text {
+      text-align: left;
+      margin: 10px 0;
+    }
+    .card-footer {
+      padding: 0 1rem;
+      background-color: var(--EEE);
+    }
+    .date-wrap {
+      margin: 25px 0;
+      .date {
+        text-align: right;
+        margin: 10px 0;
+        font-style: italic;
+        font-size: getPropFromMap($fontSizes, small);
+      }
+    }
+  }
+}
