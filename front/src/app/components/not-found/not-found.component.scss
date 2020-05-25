@@ -1,0 +1,11 @@
+@import '../../../styles/constants/_index';
+@import '../../../styles/scripts/_index';
+
+.not-found {
+  @include flex-align-center;
+  flex-direction: column;
+  padding: 80px;
+  .img {
+    font-size: getPropFromMap($fontSizes, fz30);
+  }
+}

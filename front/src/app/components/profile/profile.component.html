@@ -1,0 +1,80 @@
+<div class="profile-container">
+  <div class="general">
+    <h3>Profile</h3>
+    <ngx-ui-loader></ngx-ui-loader>
+    <h1 *ngIf="loading">Loading...</h1>
+    <div class="profile-info" *ngIf="!loading">
+      <div class="image-upload-container btn btn-file" [ngClass]="{ 'is-image': profileInfo.avatar }">
+        <span *ngIf="!profileInfo.avatar" class="no-img">No Image</span>
+        <div *ngIf="profileInfo.avatar" class="img-preview" [ngStyle]="{'background-image': 'url('+ profileInfo.avatar + ')'}"></div>
+      </div>
+      <div class="profile-details">
+        <hr/>
+        <div class="group">
+          <span>User:</span>
+          <div>{{profileInfo.name}}</div>
+        </div>
+        <div class="group">
+          <span>Email:</span>
+          <div>{{profileInfo.email}}</div>
+        </div>
+        <hr/>
+        <div class="group buttons-wrap">
+          <button class="btn btn-info" (click)="open(editProfile)">
+            Edit Profile
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Modal Edit Profile-->
+  <ng-template #editProfile let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Edit Profile</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+        <i-bs name="x" class="icon"></i-bs>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="profile-info">
+        <label class="image-upload-container btn btn-file" [ngClass]="{ 'is-image': profileInfo.avatar}">
+          <span *ngIf="!profileInfo.avatar">Select Image</span>
+          <input #imageInput id="imageInput"  type="file" accept="image/*"  (change)="processFile(imageInput)" />
+          <div *ngIf="profileInfo.avatar" class="img-preview" [ngStyle]="{'background-image': 'url('+ profileInfo.avatar + ')'}">
+          </div>
+        </label>
+        <div class="profile-details">
+          <form [formGroup]="profileForm">
+            <div class="form-group">
+              <label for="username">User Name:</label>
+              <input id="username" type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && controls.username.errors }" />
+              <div *ngIf="submitted && controls.username.errors" class="invalid-feedback">
+                <div *ngIf="controls.username.errors.required">Username is required</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input id="email" type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && controls.email.errors }" />
+              <div *ngIf="submitted && controls.email.errors" class="invalid-feedback">
+                <div *ngIf="controls.email.errors.required">Email is required</div>
+                <div *ngIf="controls.email.errors.email">Provide a valid email address</div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger" (click)="modal.dismiss()">
+          Cancel
+        </button>
+        <button  class="btn btn-info" (click)="onSubmit(modal.close)">
+          Update Profile
+        </button>
+      </div>
+  </ng-template>
+</div>
+
+
+

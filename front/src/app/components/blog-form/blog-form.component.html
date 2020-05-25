@@ -1,0 +1,39 @@
+<div class="blog-form-container">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Create Blog</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+      <i-bs name="x" class="icon"></i-bs>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="blogForm">
+      <div class="form-group">
+        <label for="title">Title*</label>
+        <input
+          name="title"
+          type="text"
+          class="form-control"
+          id="title"
+          formControlName="title"
+          placeholder="Enter title"
+          [ngClass]="{ 'is-invalid': submitted && controls.title.errors }"
+        >
+        <app-control-messages [control]="blogForm.get('title')"></app-control-messages>
+      </div>
+      <div class="form-group">
+        <label for="description">Description*</label>
+        <textarea
+          rows="10"
+          name="description"
+          class="form-control"
+          id="description"
+          formControlName="description"
+          placeholder="Enter description"
+          [ngClass]="{ 'is-invalid': submitted && controls.description.errors }"
+        ></textarea>
+        <app-control-messages [control]="blogForm.get('description')"></app-control-messages>
+      </div>
+      <button [disabled]="blogForm.invalid"  class="btn btn-info" (click)="modal.close(blogForm.value)">{{blog ? 'Edit' : 'Add'}}</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+@function getPropFromMap($name, $key) {
+  @if map-has-key($name, $key) {
+    @return map-get($name, $key);
+  }
+
+  @error 'Unknown `#{$key}` in `#{$name}`.';
+  @return null;
+}

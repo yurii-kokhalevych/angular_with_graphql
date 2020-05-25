@@ -1,0 +1,12 @@
+@import '../styles/scripts/_index';
+
+.root {
+  $heightFooterAndHeader: 60px;
+  @include flexBox(column);
+  height: 100%;
+  width: 100%;
+  .main-body {
+    height: calc(100% - 2 * #{$heightFooterAndHeader});
+    overflow-y: auto;
+  }
+}

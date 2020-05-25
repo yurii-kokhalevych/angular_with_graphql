@@ -1,0 +1,28 @@
+@mixin flexBox($direction: row, $justify: flex-start, $align: stretch , $wrap: nowrap) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+  flex-wrap: $wrap;
+}
+
+@mixin flex-center {
+  @include flexBox(row, center, center);
+}
+
+@mixin flex-column {
+  @include flexBox(column);
+}
+
+@mixin flex-space-between {
+  @include flexBox(row, space-between);
+}
+
+@mixin flex-align-center {
+  @include flexBox(row, flex-start, center);
+  align-items: center;
+}
+
+@mixin flex-justify-center {
+  @include flexBox(row, center);
+}
